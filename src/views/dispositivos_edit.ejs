@@ -1,0 +1,45 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <h1 style="text-align: center;">ACTUALIZAR DISPOSITIVO</h1>
+    <hr></hr>
+    <div class="col-md-5 offset-md-3 ">
+      <div class="card-body">
+  
+        <form action="/update/<%= data.id %>" method="POST">
+          <div style="margin-left: 12%;" class="form-group">
+            <input type="text" name="dispositivo" value="<%= data.dispositivo%>" placeholder="Terminal" class="form-control" required="required" autofocus>
+          </div>
+          <div style="margin-left: 12%;" class="form-group">
+            <input type="text" name="comercio" value="<%= data.comercio%>" placeholder="Comercio" class="form-control" required="required">
+          </div>
+          <div style="margin-left: 12%;" class="form-group">
+            <input type="tetx" name="inventario" value="<%= data.inventario%>" placeholder="Inventario" class="form-control" required="required">
+          </div>
+          <div style="margin-left: 12%;" class="form-group">
+            <input type="tetx" name="modelo" value="<%= data.modelo%>" placeholder="Modelo" class="form-control" required="required">
+          </div>
+
+          <div style="margin-left: 12%;" class="form-group">
+            <select name="cliente" class="form-control" id="cliente" required="required">
+              <option selected disabled>Clientes</option>
+              <% for (var i = 0; i < clientes.length; i++) { -%>
+                <option value="<%= clientes[i].id %>">
+                  <%= clientes[i].cliente %>
+                </option>
+              <% } -%>
+            </select>
+          </div>
+
+          <button style="background-color: green; margin-left: 12%;" type="submit" class="btn btn-primary">
+            Actualizar Dispositivo
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% include partials/_footer %>

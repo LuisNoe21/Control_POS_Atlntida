@@ -1,0 +1,81 @@
+<% include partials/_header %>
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-bordered table-striped text-center mt-4">
+        <thead>
+          <tr>
+            <td><b>Id</b></td>
+            <td><b>Terminal</b></td>
+            <td><b>Comercio</b></td>
+            <td><b># Inventario</b></td>
+            <td><b>Cliente</b></td>
+            <td><b>Opciones</b></td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= data[i].dispositivo %></td>
+                <td><%= data[i].comercio %></td>
+                <td><%= data[i].inventario %></td>
+                <td><%= data[i].cliente %></td>
+                
+                <td>
+                  <a  href="/update/<%= data[i].id %>" class="btn btn-warning">Actualizar</a>
+                  <a style="background-color: red;" style="margin-top: 3px;" href="/delete/<%= data[i].id %>" class="btn btn-danger">Eliminar</a>
+                </td>
+              </tr>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+   
+</div>
+
+
+<div  class="col-md-3">
+  <div class="card-body">
+
+    
+    <form action="/add" method="POST">
+      <p style="text-align: center;"><b>INGRESAR NUEVO DISPOSITIVO</p></b>
+    <hr></hr>
+      <div class="form-group">
+        <input type="text" name="dispositivo" placeholder="Terminal" class="form-control" required="required" autofocus>
+      </div>
+      <div class="form-group">
+        <input type="text" name="comercio" placeholder="Nombre de Comercio" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <input type="text" name="inventario" placeholder="# Inventario" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <input type="text" name="modelo" placeholder="Modelo" class="form-control" required="required">
+      </div>
+
+      <div class="form-group">
+        <select name="cliente" class="form-control" id="cliente" required="required">
+          <option selected disabled>Clientes</option>
+          <% for (var i = 0; i < clientes.length; i++) { -%>
+            <option value="<%= clientes[i].id %>">
+              <%= clientes[i].cliente %>
+            </option>
+          <% } -%>
+        </select>
+      </div>
+
+      <button style="background-color: green;" type="submit" class="btn btn-primary">
+        Guardar Dispositivo
+      </button>
+    </form>
+  </div>
+</div>
+
+
+
+<% include partials/_footer %>

@@ -1,0 +1,27 @@
+<% include partials/_headercat %>
+
+<div class="container mt-5">
+  <div class="row">
+    <h1 style="text-align: center;">ACTUALIZAR CLIENTE</h1>
+    <hr></hr>
+    <div class="col-md-5 offset-md-3">
+     
+        
+        <form action="/clientes/updatem/<%= data.id %>" method="POST">
+          <div style="margin-left: 12%;" class="form-group">
+            <input type="text" name="cliente" value="<%= data.cliente%>" placeholder="Cliente" class="form-control" required="required" autofocus>
+          </div>
+          <div style="margin-left: 12%;" class="form-group">
+            <input type="text" name="telefono" value="<%= data.telefono%>" placeholder="Telefono" class="form-control" required="required">
+          </div>
+
+          <button style="background-color: green; margin-left: 12%;" type="submit" class="btn btn-primary">
+            Actualizar Cliente
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+<% include partials/_footer %>

@@ -1,0 +1,37 @@
+<% include partials/_header %>
+<div class="container mt-5" style="width: min(100%, 450px)">
+    <% 
+        if(errors.length !== 0) { 
+            errors.forEach(error => {%>
+                <div class="alert alert-danger mb-3">
+                    <p class="m-0"><%= error %></p>
+                </div>
+            <%})
+        }
+    %>
+    <h1 class="h3">Registrar usuario</h1>
+    <hr />
+    <form action="/register" method="post">
+        <div class="form-group">
+            <label for="fullname">Fullname</label>
+            <input class="form-control" id="fullname" type="text" name="fullname" />
+        </div>
+        <div class="form-group mt-3">
+            <label for="username">Username</label>
+            <input class="form-control" id="username" type="text" name="username" />
+        </div>
+        <div class="form-group mt-3">
+            <label for="password">Password</label>
+            <input class="form-control" id="password" type="password" name="password" />
+        </div>
+        <div class="form-group mt-3">
+            <label for="cpassword">Cofirm Password</label>
+            <input class="form-control" id="cpassword" type="password" name="cpassword" />
+        </div>
+        <div class="form-group mt-3">
+            <div class="d-grid gap-2"><button class="btn btn-primary">Register</button></div>
+            <div class="d-grid gap-2 mt-1"><a class="btn btn-success" href="/">Regresar</a></div>
+        </div>
+    </form>
+</div>
+<% include partials/_footer %>
